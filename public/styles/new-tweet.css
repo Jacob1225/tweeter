@@ -1,0 +1,25 @@
+.button1 {
+    background-color: #4056A1;
+    color: white;
+    font-family:'Bungee', cursive;
+}
+
+.counter {
+    font-family:'Bungee', cursive;
+    float: right;
+}
+
+.label {
+    font-weight: 700;
+    font-size: medium;
+}
+
+textarea {
+    width: 100%;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: medium;
+
+}

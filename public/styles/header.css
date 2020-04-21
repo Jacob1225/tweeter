@@ -1,0 +1,12 @@
+header {
+    height: 400px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    background-color: #fcbd00;
+    background-image: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+}
+.header-name h2 {
+    margin: 0; 
+}
+  
