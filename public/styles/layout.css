@@ -27,6 +27,63 @@ body {
   margin: 0 auto;
 }
 
+#tweet-container article {
+  border: 3px black solid;
+  padding: 10px;
+  margin-bottom: 15px;
+
+}
+#tweet-container article:hover {
+  box-shadow: 5px 5px #888888;
+}
+
+#tweet-container {
+  margin-top: 50px; 
+}
+
+#tweet-container header {
+  margin: 10px;
+  display: flex;
+}
+
+.user {
+  display: none;
+  font-weight: 700;
+  color: #D2D6E5;
+  margin-left: auto;
+}
+
+.user-tweet {
+  margin-left: 10px;
+}
+
+#tweet-container footer {
+  border-top: 3px black solid; 
+  display: flex;
+}
+
+.date {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.footer-icons {
+  margin-right: 24px;
+  margin-left: auto;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+#tweet-container article:hover .user{
+  display: block;
+}
+
+.fa-user-ninja{
+  font-size: 50px;
+  margin-right: 10px;
+}
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
