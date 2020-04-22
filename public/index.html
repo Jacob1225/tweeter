@@ -21,11 +21,18 @@
 
     <!-- Header-->
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <!-- Character counter JS-->
+    <script src="/scripts/composer-char-counter.js"></script>
+    
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/7b337e3892.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -33,7 +40,7 @@
     <nav>
       <span>tweeter</span>
     </nav>
-    <header>
+    <header class="header-main">
       <div class="header-avatar">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -45,6 +52,7 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form method= 'POST' action='/tweets'>
@@ -53,6 +61,29 @@
           <button class="button1" type="submit">Tweet</button>
           <output class= "counter" name="counter" class="counter" for="tweet-text">140</output>
         </form>
+      </section>
+
+      <section id="tweet-container">
+        <article>
+          <header>
+            <i class="fas fa-user-ninja"></i>
+            <p>
+              Jacob C.
+            </p> 
+            <p class="user">@Jacob1225</p>
+            </header>
+            <div class="user-tweet">
+              <p>Hello this is my awesome new tweet</p>
+            </div>
+          <footer> 
+            <p class="date">10 days ago</p>
+            <div class ="footer-icons"> 
+              <i class="fas fa-flag"></i>
+              <i class="fas fa-retweet"></i>
+              <i class="fas fa-heart"></i>
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
