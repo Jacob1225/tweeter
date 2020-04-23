@@ -9,6 +9,10 @@
     float: right;
 }
 
+.red{
+    color: red;
+}
+
 .label {
     font-weight: 700;
     font-size: medium;
@@ -21,5 +25,14 @@ textarea {
     border-left: none;
     border-right: none;
     border-bottom-width: medium;
+    resize: none;
+}
 
+#error {
+    display: none;
+    text-align: center;
+    height: 50px;
+    border: red 2px solid;
+    color: red;
+    font-family: 'Source Sans Pro', sans-serif;
 }

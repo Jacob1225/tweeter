@@ -15,6 +15,7 @@ html {
  */
 
 body {
+  padding-top: 120px;
   color: #545149;
   background-color: #f4f1ec;
   font-family: 'Source Sans Pro', sans-serif;
@@ -53,8 +54,12 @@ body {
   margin-left: auto;
 }
 
-.user-tweet {
+.user-Tweet {
   margin-left: 10px;
+}
+
+.user-Tweet p {
+  word-break: break-word;
 }
 
 #tweet-container footer {
@@ -79,9 +84,10 @@ body {
   display: block;
 }
 
-.fa-user-ninja{
-  font-size: 50px;
+.avatar {
+  margin-top: 10px;
   margin-right: 10px;
+  height: 50px;
 }
 
 

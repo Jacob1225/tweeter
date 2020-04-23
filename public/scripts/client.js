@@ -1,35 +1,10 @@
-// const data = [
-//     {
-//       "user": {
-//         "name": "Newton",
-//         "avatars": "https://i.imgur.com/73hZDYK.png"
-//         ,
-//         "handle": "@SirIsaac"
-//       },
-//       "content": {
-//         "text": "If I have seen further it is by standing on the shoulders of giants"
-//       },
-//       "created_at": 1461116232227
-//     },
-//     {
-//       "user": {
-//         "name": "Descartes",
-//         "avatars": "https://i.imgur.com/nlhLi3I.png",
-//         "handle": "@rd" },
-//       "content": {
-//         "text": "Je pense , donc je suis"
-//       },
-//       "created_at": 1461113959088
-//     }
-//   ]
- //---------FUNCTION THAT CREATES A NEW ARTICLE TWEET TO ADD TO THE TWEET CONTAINER ------------
- const createTweetElement = function (tweetObject) {
-     console.log(tweetObject);
+const createTweetElement = function (tweetObject) {
+    console.log(tweetObject);
     const $article = $(`<article>`);
 
     const $header = $(`<header>`); 
 
-     //---- CREATING HEADER ELEMENTS----------
+    //---- CREATING HEADER ELEMENTS----------
     const $img = $(`<img>`).addClass(`avatar`);
     $img.attr('src', tweetObject.user.avatars).appendTo($header);
 
@@ -81,6 +56,7 @@ const renderTweets = function (tweets) {
     });
 };
 
+//---------FUNCNTION THAT EXECUTES A GET REQUEST TO RETRIEVE ALL THE TWEETS WHEN CALLED 
 const loadTweets = function () {
     $.ajax( {
         url: '/tweets',
@@ -90,29 +66,56 @@ const loadTweets = function () {
     })
 };
 
-//-------- AJAX POST REQUEST ---------------------
+//
 $(document).ready(function () {
-   
-    
     loadTweets(); 
 
-$('form').submit(function (event) {
-    event.preventDefault();
-    
-    //information from the server 
-    let text = $('#tweet-text').val();
-    $.ajax( {
-        url: '/tweets',
-        type: 'POST',
-        data: {text}
-      })
+    //---------FUNCTION THAT VALIDATES THE USER'S INPUT AND RETURNS TRUE IF NO ERRORS OCCUR-----------
+    const formValidation = function () {
+        let text = $('#tweet-text');
+        const MAX_LENGTH = 140;
 
-      .then((tweet) => {createTweetElement(tweet).appendTo('#tweet-container')});
+        if (text.val().length > MAX_LENGTH) {
+            $('#error').slideDown('fast', function() {
+                $('#error').text('Sorry, too many characters');
+            });
+
+            text.focus();
+            return false;
+       
+        } else if (!text.val()) {
+            
+            $('#error').slideDown('fast', function() {
+                $('#error').text('Sorry, text field cannot be blank');
+            });
+
+            text.focus();
+            return false;
+        }
+        $('#error').slideUp('fast', function() {
+        });
+        return true;
+      };
     
+    //----------FUNCTION THAT CALLS THE FORMVALIDATION FUNCTION AND EXECUTES A POST REQUEST IF NO ERRORS OCCUR---------
+    $('form').submit(function (event) {
+        event.preventDefault();
+        
+        let text = $('#tweet-text').val();
+        
+        if (formValidation()) {
+            
+            $.ajax( {
+                url: '/tweets',
+                type: 'POST',
+                data: {text}
+            })
+    
+            .then((tweet) => {createTweetElement(tweet).prependTo('#tweet-container')});
+        
+        }
+        $('#tweet-text').val('');
     });
-
- 
-
 });
 
 
