@@ -1,12 +1,23 @@
-header {
+/* ------- CSS styling for the main header that displays the user profile picture and name */
+
+.header-main {
     height: 400px;
     width: 100%;
-    position: relative;
-    text-align: center;
-    background-color: #fcbd00;
-    background-image: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffb307;
 }
 .header-name h2 {
     margin: 0; 
+    color: white;
+    font-weight: 300;
+}
+
+.bold {
+    font-weight: bold;
+    padding-right: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
   

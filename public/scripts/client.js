@@ -8,15 +8,13 @@ const createTweetElement = function (tweetObject) {
     const $img = $(`<img>`).addClass(`avatar`);
     $img.attr('src', tweetObject.user.avatars).appendTo($header);
 
-
     $(`<p>`).text(tweetObject.user.name).appendTo($header);
 
     const $userP = $(`<p>`).addClass(`user`);
     $userP.text(tweetObject.user.handle).appendTo($header);
 
     //----ADD HEADER TO ARTICLE ---------
-
-    $article.append($header);
+     $article.append($header);
 
     //----CREATING DIV WITH CLASS OF USER-TWEET-------
     const $userTweetDiv = $(`<div>`).addClass(`user-Tweet`);
@@ -24,11 +22,12 @@ const createTweetElement = function (tweetObject) {
 
     $article.append($userTweetDiv);
 
-    //---CREATING THE FOOTER ------ 
+    //---CREATING THE FOOTER ---------------------------------
     const $footer = $(`<footer>`); 
 
     const $dateP = $(`<p>`).addClass(`date`);
-    $dateP.text(tweetObject.created_at).appendTo($footer);
+    let dateDays = Math.floor(tweetObject.created_at / (60*60*60*24*1000));
+    $dateP.text(`${dateDays} days ago`).appendTo($footer);
 
     const $footerIconsDiv = $(`<div>`).addClass(`footer-icons`);
 
@@ -48,7 +47,6 @@ const createTweetElement = function (tweetObject) {
     return $article;
 
  }
-
  //---------FUNCTION THAT APPENDS CREATES THE NEW TWEETS ARTICLES AND APPENDS EACH TO THE TWEET CONTAINER--------------
 const renderTweets = function (tweets) {
     tweets.forEach((tweetObject) => {
@@ -66,9 +64,14 @@ const loadTweets = function () {
     })
 };
 
-//
 $(document).ready(function () {
     loadTweets(); 
+
+    //--------Toggles the compose new tweet container when clicked and hides it when clicked again---------------
+    $('.compose').click(function(event) {
+        $('.new-tweet').slideToggle('fast');
+        $('#tweet-text').focus();
+    })
 
     //---------FUNCTION THAT VALIDATES THE USER'S INPUT AND RETURNS TRUE IF NO ERRORS OCCUR-----------
     const formValidation = function () {
@@ -77,27 +80,26 @@ $(document).ready(function () {
 
         if (text.val().length > MAX_LENGTH) {
             $('#error').slideDown('fast', function() {
-                $('#error').text('Sorry, too many characters');
+                $('#error span').text('Sorry, too many characters');
             });
-
+            
             text.focus();
             return false;
        
         } else if (!text.val()) {
             
             $('#error').slideDown('fast', function() {
-                $('#error').text('Sorry, text field cannot be blank');
+                $('#error span').text('Sorry, text field cannot be blank');
             });
 
             text.focus();
             return false;
         }
-        $('#error').slideUp('fast', function() {
-        });
+        $('#error').slideUp('fast');
         return true;
       };
     
-    //----------FUNCTION THAT CALLS THE FORMVALIDATION FUNCTION AND EXECUTES A POST REQUEST IF NO ERRORS OCCUR---------
+    //----------FUNCTION THAT CALLS THE FORMVALIDATION FUNCTION AND EXECUTES A POST REQUEST---------
     $('form').submit(function (event) {
         event.preventDefault();
         
@@ -112,9 +114,9 @@ $(document).ready(function () {
             })
     
             .then((tweet) => {createTweetElement(tweet).prependTo('#tweet-container')});
-        
+            $('#tweet-text').val('');
+            $('.counter').text('140');
         }
-        $('#tweet-text').val('');
     });
 });
 

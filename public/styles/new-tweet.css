@@ -1,9 +1,10 @@
+/* -------CSS styling for the new tweet container that displays where the user inputs a new tweet----------- */
+
 .button1 {
     background-color: #4056A1;
     color: white;
     font-family:'Bungee', cursive;
 }
-
 .counter {
     font-family:'Bungee', cursive;
     float: right;
@@ -30,9 +31,19 @@ textarea {
 
 #error {
     display: none;
-    text-align: center;
     height: 50px;
     border: red 2px solid;
     color: red;
-    font-family: 'Source Sans Pro', sans-serif;
+    padding: 10px;
+    margin: 50px 0;
 }
+
+.error-message {
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+.new-tweet {
+    display: none;
+}
+
+

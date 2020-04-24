@@ -1,15 +1,38 @@
+/* ------ CSS styling for navigation bar that displays the web app's logo and the compose new tweet button on the right------- */
+
 nav {
-    
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 120px;
     width: 100%;
     z-index: 10;
     background: #4056A1;
     color: #FFFFFF;
     padding: 1.5em;
-
 }
+
 span {
     font-family: 'Bungee', cursive;
 }
 
+.compose {
+    margin-left: auto;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+}
 
+.compose p {
+    margin: 0;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+  }
