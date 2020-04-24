@@ -8,7 +8,7 @@ This repository is the starter code for the project: Students will fork and clon
 
 !["Main page view for desktops"](https://github.com/Jacob1225/tweeter/blob/master/docs/Desktop-view.png?raw=true)
 !["Main page view for mobile"](https://github.com/Jacob1225/tweeter/blob/master/docs/Mobile-view.png?raw=true)
-["New tweet form"](https://github.com/Jacob1225/tweeter/blob/master/docs/New-Tweet.png?raw=true)
+!["New tweet form"](https://github.com/Jacob1225/tweeter/blob/master/docs/New-Tweet.png?raw=true)
 
 
 ## Getting Started
