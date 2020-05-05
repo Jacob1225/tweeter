@@ -79,6 +79,11 @@ body {
   margin-left: auto;
   margin-top: 10px;
   font-size: 15px;
+  display: none;
+}
+
+#tweet-container article:hover .footer-icons {
+  display: block;
 }
 
 #tweet-container article:hover .user{
@@ -147,6 +152,4 @@ body {
   nav span {
     padding-bottom: 20px;
   }
-
-
 }

@@ -1,3 +1,4 @@
+
 const createTweetElement = function (tweetObject) {
     console.log(tweetObject);
     const $article = $(`<article>`);
@@ -26,8 +27,11 @@ const createTweetElement = function (tweetObject) {
     const $footer = $(`<footer>`); 
 
     const $dateP = $(`<p>`).addClass(`date`);
-    let dateDays = Math.floor(tweetObject.created_at / (60*60*60*24*1000));
-    $dateP.text(`${dateDays} days ago`).appendTo($footer);
+    $dateP.text(moment(tweetObject.created_at).fromNow()).appendTo($footer);
+    
+   
+
+    //$dateP.text(`${(tweetObject.created_at)/ (60*60*60*24*1000)} days ago`).appendTo($footer);
 
     const $footerIconsDiv = $(`<div>`).addClass(`footer-icons`);
 
@@ -54,7 +58,7 @@ const renderTweets = function (tweets) {
     });
 };
 
-//---------FUNCNTION THAT EXECUTES A GET REQUEST TO RETRIEVE ALL THE TWEETS WHEN CALLED 
+//---------FUNCNTION THAT EXECUTES A GET REQUEST TO RETRIEVE ALL THE TWEETS WHEN CALLED-----------------
 const loadTweets = function () {
     $.ajax( {
         url: '/tweets',
@@ -67,7 +71,7 @@ const loadTweets = function () {
 $(document).ready(function () {
     loadTweets(); 
 
-    //--------Toggles the compose new tweet container when clicked and hides it when clicked again---------------
+    //--------TOGGLES COMPOSE NEW TWEET CONTAINER WHEN CLICKED AND HIDES IT WHEN CLICKED AGAIN---------------
     $('.compose').click(function(event) {
         $('.new-tweet').slideToggle('fast');
         $('#tweet-text').focus();
